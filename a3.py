@@ -239,18 +239,18 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
 
 
 def search_pa_list(src: List[str]) -> List[str]:
-    """Takes source, finds matching pattern and calls corresponding action. If it finds
-    a match but has no answers it returns ["No answers"]. If it finds no match it
-    returns ["I don't understand"].
+    for pat, act in pa_list:
+        print(f"pattern: {pat}, source: {src}, action: {act}")
+        mat = match(pat, src)
+        print(f"match: {mat}")
 
-    Args:
-        source - a phrase represented as a list of words (strings)
+        if mat is not None:
+            ans = act(mat)
+            print(f"answer: {ans}")
+            return ans if ans else ["No answers"]
 
-    Returns:
-        a list of answers. Will be ["I don't understand"] if it finds no matches and
-        ["No answers"] if it finds a match but no answers
-    """
-    pass
+    return ["I don't understand"]
+
 
 
 def query_loop() -> None:
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     ), "failed title_before_year test"
     assert isinstance(title_after_year(["1990"]), list), "title_after_year not returning a list"
     assert sorted(title_after_year(["1990"])) == sorted(
-        ["boyz n the hood", "dead again", "the crying game", "flirting", "malcolm x"]
+        ["boyz n the hood", "dead again", "the crying game", "flirting", "malcolm x", "how to train your dragon"]
     ), "failed title_after_year test"
     assert isinstance(director_by_title(["jaws"]), list), "director_by_title not returning a list"
     assert sorted(director_by_title(["jaws"])) == sorted(

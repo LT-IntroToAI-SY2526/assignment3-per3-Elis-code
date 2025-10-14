@@ -435,4 +435,18 @@ movie_db: List[Tuple[str, str, int, List[str]]] = [
             "spike lee",
         ],
     ),
+    (
+        "how to train your dragon",
+        "Chris Sanders",
+        2010,
+        [
+            "Jay Baruchel",
+            "Gerard Butler",
+            "America Ferrera",
+            "Jonah Hill",
+            "Kristen Wiig",
+            "Craig Ferguson",
+            "Christopher Mintz-Plasse",
+        ]
+    ),
 ]
